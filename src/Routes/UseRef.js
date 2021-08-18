@@ -20,8 +20,8 @@ const Div = styled.div`
 `;
 
 const UseRef = () => {
-  const potato = useRef('');
-  const {current} = potato;
+  const minji = useRef('');
+  const {current} = minji;
   useEffect(() => {
     setTimeout(() => {
       current && current.focus();
