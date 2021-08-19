@@ -37,7 +37,7 @@ const UseTitle = () => {
   return (
     <Container>
       <Div>
-        <h1>hi</h1>
+        <h1>4. 버튼 누르면 head의 title이 changed로 바뀌게 하기</h1>
         <button onClick={handleClick}>change</button>
       </Div>
       <Pre>

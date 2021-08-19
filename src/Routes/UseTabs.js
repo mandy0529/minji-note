@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const Pre = styled.pre`
@@ -18,79 +18,77 @@ const Pre = styled.pre`
 const Div = styled.div`
   margin: 100px;
 `;
-const content = [
+
+const tabs = [
   {
-    tab: 'cafe',
-    content: 'why u thought that? you like cafe?',
+    date: 'weekday',
+    todo: '👩🏻‍💻 working, studying, working out',
   },
   {
-    tab: 'home',
-    content: 'home sweet home whenever, whoever!',
+    date: 'weekend',
+    todo: '🏄‍♂️ to go anywhere I wanna',
   },
 ];
-const useForTabs = (currentTabs, allTabs) => {
-  const [currentIndex, setcurrentIndex] = useState(currentTabs);
+
+const UseForTabs = (initialTab, allTabs) => {
+  const [currentIndex, setCurrentIndex] = useState(initialTab);
   if (!allTabs || !Array.isArray(allTabs)) {
     return;
   }
-  return {
-    currentItem: allTabs[currentIndex],
-    changeItem: setcurrentIndex,
-  };
+
+  return {current: allTabs[currentIndex], change: setCurrentIndex};
 };
 
 const UseTabs = () => {
-  const {currentItem, changeItem} = useForTabs(0, content);
+  const {current, change} = UseForTabs(0, tabs);
   return (
     <Container>
       <Div>
-        <h1> where do u concentrate on developeing programming study?</h1>
+        <h1>2. use tabs = 배열로 담은 값 버튼누르면 각각 나오게하기</h1>
+        <h2>what are you doing this day?</h2>
         <div>
-          {content.map((btn, index) => (
-            <button onClick={() => changeItem(index)}>{btn.tab}</button>
+          {tabs.map((tab, index) => (
+            <button onClick={() => change(index)}>{tab.date}</button>
           ))}
         </div>
-        <h1>{currentItem.content}</h1>
+        <h2> {current.todo}</h2>
       </Div>
       <Pre>
-        {`import React, {useState, useEffect} from 'react';
-          import styled from 'styled-components';
+        {`import React, {useEffect, useState} from 'react';
+import styled from 'styled-components';
 
-const content = [
+const tabs = [
   {
-    tab: 'cafe',
-    content: 'why u thought that? you like cafe?',
+    date: 'weekday',
+    todo: '👩🏻‍💻 working, studying, working out',
   },
   {
-    tab: 'home',
-    content: 'home sweet home whenever, whoever!',
+    date: 'weekend',
+    todo: '🏄‍♂️ to go anywhere I wanna',
   },
 ];
-const useForTabs = (currentTabs, allTabs) => {
-  const [currentIndex, setcurrentIndex] = useState(currentTabs);
+
+const UseForTabs = (initialTab, allTabs) => {
+  const [currentIndex, setCurrentIndex] = useState(initialTab);
   if (!allTabs || !Array.isArray(allTabs)) {
     return;
   }
-  return {
-    currentItem: allTabs[currentIndex],
-    changeItem: setcurrentIndex,
-  };
+
+  return {current: allTabs[currentIndex], change: setCurrentIndex};
 };
 
 const UseTabs = () => {
-  const {currentItem, changeItem} = useForTabs(0, content);
+  const {current, change} = UseForTabs(0, tabs);
   return (
-    <Container>
-      <Div>
-      <h1> where do u concentrate on developeing programming study?</h1>
+    <>
+      <h1>what are you doing this day?</h1>
       <div>
-        {content.map((btn, index) => (
-          <button onClick={() => changeItem(index)}>{btn.tab}</button>
+        {tabs.map((tab, index) => (
+          <button onClick={() => change(index)}>{tab.date}</button>
         ))}
       </div>
-        <h1>{currentItem.content}</h1>
-      </Div>
-    </Container>
+      <h2> {current.todo}</h2>
+    </>
   );
 };
 

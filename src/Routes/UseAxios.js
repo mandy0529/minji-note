@@ -18,7 +18,9 @@ const Pre = styled.pre`
   font-size: 15px;
   margin: 20px;
 `;
-
+const Icon = styled.h1`
+  color: tomato;
+`;
 const useForAxios = (options, axiosInstance = defaultAxios) => {
   const [state, setState] = useState({
     loading: true,
@@ -66,8 +68,9 @@ const UseAxios = () => {
   return (
     <Container>
       <Div>
-        <h1>{data && data.status}</h1>
-        <h1>{loading && 'loading'}</h1>
+        <h1>16. axios 가져오는지 콘솔에서 확인</h1>
+        <Icon>{data && data.status}</Icon>
+        <Icon>{loading && 'loading'}</Icon>
         <button onClick={refetch}>refetch</button>
       </Div>
       <Pre>

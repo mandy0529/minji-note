@@ -19,6 +19,12 @@ const Div = styled.div`
   margin: 100px;
 `;
 
+const Number = styled.h1`
+  color: teal;
+  border: 10px;
+  font-weight: bold;
+`;
+
 const UseEffect = () => {
   const sayHello = () => {
     console.log('hello, minji!');
@@ -35,7 +41,8 @@ const UseEffect = () => {
   return (
     <Container>
       <Div>
-        <h1>{number < 0 ? 0 : number}</h1>
+        <h1>3. 1씩 더하고 빼기</h1>
+        <Number>{number < 0 ? 0 : number}</Number>
 
         <button onClick={handlePlus}>+</button>
         <button onClick={handleMinus}>-</button>

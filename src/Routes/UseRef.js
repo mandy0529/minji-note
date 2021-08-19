@@ -21,18 +21,17 @@ const Div = styled.div`
 
 const UseRef = () => {
   const minji = useRef('');
-  const {current} = minji;
   useEffect(() => {
     setTimeout(() => {
-      current && current.focus();
+      minji.current.focus();
     }, 3000);
   });
 
   return (
     <Container>
       <Div>
-        <h1>hi</h1>
-        <input ref={potato} placeholder="write your name"></input>
+        <h1>6. 3초 뒤 input focus 해주기 ( use ref ) </h1>
+        <input ref={minji} placeholder="write your name"></input>
       </Div>
       <Pre>
         {`import React, {useState, useEffect, useRef} from 'react';
