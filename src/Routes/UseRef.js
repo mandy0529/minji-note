@@ -23,7 +23,7 @@ const UseRef = () => {
   const minji = useRef('');
   useEffect(() => {
     setTimeout(() => {
-      minji.current.focus();
+      minji.current && minji.current.focus();
     }, 3000);
   });
 
